@@ -7,10 +7,11 @@ import { useState } from 'react';
 function App() {
 
   let post = "도현도현";
-  let [글제목, setTitle] = useState(['남자 코트 추천', '맛집추천', '코딩공부']);
+  let [글제목, setTitle] = useState(['남자 코트 추천', '맛집 추천', '코딩공부']);
   let [좋아요, setCount] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
   let [mTitle, setmTitle] = useState(0);
+  let [input, setInput] = useState('');
 
   let num = [1, 2]
   let [a, c] = [1, 2];
@@ -19,60 +20,41 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <h4 style={{color:'pink', fontSize:'16px'}}>BLOG</h4>
+        <h4 style={{color:'pink', fontSize:'16px'}}>ReactBlog</h4>
       </div>
       <h4>{post}</h4> 
       
-      <button onClick={ ()=>{
-        let copy = [...글제목];
-        copy[0] = '여자 코트 추천';
-        setTitle(copy);
-      } }>글제목 변경</button>
-
-      <button onClick={ ()=>{
-        let copy = [...글제목];
-        copy.sort();
-        console.log(copy);
-        setTitle(copy);
-      } }>오름차순 정렬</button>
-
-      <button onClick={ ()=>{
-        let copy = [...글제목];
-        copy.sort( (a,b)=>{
-          if(a < b) return 1;
-          if(a > b) return -1;
-          if(a === b) return 0;
-        } );
-        console.log(copy);
-        setTitle(copy);
-      } }>내림차순 정렬</button>
-
       { // map 함수
         글제목.map(function(a, i){
           return (
           <div className="list" key={i}>
             <h4 onClick={()=>{ setModal(!modal); setmTitle(i) }}>{ 글제목[i] } 
-              <span onClick={ ()=>{
+              <span onClick={ (e)=>{ e.stopPropagation(); // 이벤트 버블링 방지
                 let copy = [...좋아요];
                 copy[i] += 1;
-                // console.log(copy[i]);
-                setCount(copy) }}>💘
+                setCount(copy) }}> 💘
               </span> {좋아요[i]}
             </h4>
-            <p>2월 18일 발행</p>
+            <p>2월 18일 발행 <button onClick={()=>{
+              let copy = [...글제목];
+              copy.splice(i, 1);
+              setTitle(copy);
+            }}>삭제</button></p>
           </div>
           )
         })
       }
 
-      <button onClick={()=>{ setmTitle(0) }}>글제목0</button>
-      <button onClick={()=>{ setmTitle(1) }}>글제목1</button>
-      <button onClick={()=>{ setmTitle(2) }}>글제목2</button>
+      <input onChange={(e)=>{ setInput(e.target.value); console.log(input); }} />
+      <button onClick={()=>{
+        let copy = [...글제목];
+        copy.unshift(input);
+        setTitle(copy);
+
+      }}>등록</button>
 
       {
         modal == true ? <Modal 글제목={글제목} mTitle={mTitle} /> : null
-        // 부모-->자식 state 전송하는법
-        // <자식컴포넌트 작명={state이름}>
       }
 
     </div>
