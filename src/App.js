@@ -32,7 +32,7 @@ function App() {
               <span onClick={ (e)=>{ e.stopPropagation(); // 이벤트 버블링 방지
                 let copy = [...좋아요];
                 copy[i] += 1;
-                setCount(copy) }}> 💘
+                setCount(copy) }} style={{cursor:'pointer'}}> 💘
               </span> {좋아요[i]}
             </h4>
             <p>2월 18일 발행 <button onClick={()=>{
@@ -45,7 +45,7 @@ function App() {
         })
       }
 
-      <input onChange={(e)=>{ setInput(e.target.value); console.log(input); }} />
+      <input type="text" onChange={(e)=>{ setInput(e.target.value.replace('')); console.log(input); }} required placeholder="글을 입력하세요" />
       <button onClick={()=>{
         let copy = [...글제목];
         copy.unshift(input);
