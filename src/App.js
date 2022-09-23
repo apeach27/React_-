@@ -8,7 +8,7 @@ function App() {
 
   let post = "도현도현";
   let [글제목, setTitle] = useState(['남자 코트 추천', '맛집추천', '코딩공부']);
-  let [좋아요, setCount] = useState(0);
+  let [좋아요, setCount] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
 
   // 1. import { useState }
@@ -62,18 +62,28 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
+        <h4>{ 글제목[1] }</h4>
+        <p>2월 17일 발행</p>
+      </div> 
+      <div className="list">
         <h4 onClick={()=>{ setModal(!modal) }}>{ 글제목[2] }</h4>
         <p>2월 17일 발행</p>
       </div> */}
 
-      {
-        // map함수
+
+      { // map 함수
         글제목.map(function(a, i){
-          console.log(i)
-          return ( 
-          <div className="list">
-            <h4>{ 글제목[i] }</h4>
-            <p>2월 17일 발행</p>
+          return (
+          <div className="list" key={i}>
+            <h4>{ 글제목[i] } 
+              <span onClick={ ()=>{
+                let copy = [...좋아요];
+                copy[i] = copy[i]+1;
+                // console.log(copy[i]);
+                setCount(copy) }}>💘
+              </span> {좋아요[i]}
+            </h4>
+            <p>2월 18일 발행</p>
           </div>
           )
         })
