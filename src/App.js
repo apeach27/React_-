@@ -10,6 +10,7 @@ function App() {
   let [글제목, setTitle] = useState(['남자 코트 추천', '맛집추천', '코딩공부']);
   let [좋아요, setCount] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
+  let [mTitle, setmTitle] = useState(0);
 
   let num = [1, 2]
   let [a, c] = [1, 2];
@@ -50,9 +51,8 @@ function App() {
         글제목.map(function(a, i){
           return (
           <div className="list" key={i}>
-            <h4 onClick={()=>{ setModal(!modal) }}>{ 글제목[i] } 
+            <h4 onClick={()=>{ setModal(!modal); setmTitle(i) }}>{ 글제목[i] } 
               <span onClick={ ()=>{
-                
                 let copy = [...좋아요];
                 copy[i] += 1;
                 // console.log(copy[i]);
@@ -65,8 +65,12 @@ function App() {
         })
       }
 
+      <button onClick={()=>{ setmTitle(0) }}>글제목0</button>
+      <button onClick={()=>{ setmTitle(1) }}>글제목1</button>
+      <button onClick={()=>{ setmTitle(2) }}>글제목2</button>
+
       {
-        modal == true ? <Modal color={'skyblue'} 글제목={글제목} setTitle={setTitle} /> : null
+        modal == true ? <Modal 글제목={글제목} mTitle={mTitle} /> : null
         // 부모-->자식 state 전송하는법
         // <자식컴포넌트 작명={state이름}>
       }
@@ -78,14 +82,11 @@ function App() {
 // 컴포넌트 만들기
 function Modal(props){
   return (
-    <div className='modal' style={{background: props.color}}>
-      <h4>{props.글제목[0]}</h4>
+    <div className='modal'>
+      <h4>{props.글제목[props.mTitle]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
-      <button onClick={ ()=>{
-        props.setTitle(['여자 코트 추천', '맛집추천', '코딩공부'])
-
-      } }>글 수정</button>
+      <button>글 수정</button>
     </div>
   )
 }
