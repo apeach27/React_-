@@ -45,7 +45,7 @@ function App() {
         })
       }
 
-      <input type="text" onChange={(e)=>{ setInput(e.target.value.replace('')); console.log(input); }} required placeholder="글을 입력하세요" />
+      <input type="text" onChange={(e)=>{ setInput(e.target.value); console.log(input); }} required placeholder="글을 입력하세요" />
       <button onClick={()=>{
         let copy = [...글제목];
         copy.unshift(input);
