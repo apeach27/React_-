@@ -44,7 +44,7 @@ function App() {
                 setCount(copy) }} style={{cursor:'pointer'}}> 💘
               </span> {좋아요[i]}
             </h4>
-            <p class="date">{날짜[i]} 발행 <button onClick={()=>{
+            <p className="date">{날짜[i]} 발행 <button onClick={()=>{
               let copy = [...글제목];
               copy.splice(i, 1);
               setTitle(copy);
