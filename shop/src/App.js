@@ -6,6 +6,8 @@ import { useState } from 'react';
 function App() {
 
   let [title, setTitle] = useState(['BIG LOGO KNIT PULLOVER IN IVORY', 'handmade wool trench CT', '버켄스탁 보스턴 퍼 모카 1020567'])
+  let [brand, setBrand] = useState(['마뗑킴', '링서울', '버켄스탁'])
+  let [img, setImg] = useState(['neat1', 'outer1', 'shoes1'])
 
   return (
     <div className="App">
@@ -51,26 +53,21 @@ function App() {
       <div className='main-bg'></div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL+'/img/neat1.jpg'} alt="neat" width="80%"/>
-            <h4>{ title[0] }</h4>
-            <p>마뗑킴</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL+'/img/outer1.jpg'} alt="=outer" width="80%"/>
-            <h4>{ title[1] }</h4>
-            <p>링서울</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL+'/img/shoes1.jpg'} alt="shoes" width="80%"/>
-            <h4>{ title[2] }</h4>
-            <p>버켄스탁</p>
-          </div>
+
+          {
+            title.map(function(a, i){
+              return (
+                <div className="col-md-4" key={i}>
+                  <img src={process.env.PUBLIC_URL+'/img/'+( img[i] )+'.jpg'} alt="neat" width="80%" style={{cursor: 'pointer'}}/>
+                  <h4>{ title[i] }</h4>
+                  <p>{ brand[i] }</p>
+                </div>
+              )
+            })
+          }
+
         </div>
       </div> 
-
-
-
     </div>
 
     
