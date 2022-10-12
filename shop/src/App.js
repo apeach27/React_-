@@ -42,28 +42,32 @@ function App() {
         </Container>
       </Navbar>
       
+      <Link to={"/"}>홈</Link>
+      <Link to={"/detail"}>상세페이지</Link>
+
       <Routes>
-        <Route path='/' element={<div>메인페이지 입니다.</div>} />
+        <Route path='/' element={
+          <>
+          <div className='main-bg'></div>
+          <div className="container">
+            <div className="row">
+              {
+                items.map((a, i) => {
+                  return(
+                    <Card items={ items[i] } i={ i }></Card>
+                  )
+                })
+              }
+            </div>
+          </div> 
+          
+          </>
+        } />
         <Route path='/detail' element={<div>상세페이지 입니다.</div>} />
-        <Route/>
       </Routes>
 
 
-      <div className='main-bg'></div>
-      <div className="container">
-        <div className="row">
-          {
-            items.map((a, i) => {
-              return(
-                <Card items={ items[i] } i={ i }></Card>
-              )
-            })
 
-          }
-
-
-        </div>
-      </div> 
     </div>
     
   );
