@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
 import data from './data.js';
+import { Routes, Route, Link } from 'react-router-dom'
 
 function App() {
 
@@ -12,6 +13,13 @@ function App() {
 
   return (
     <div className="App">
+
+      <Routes>
+        <Route path='/datail' element={<div></div>} />
+        <Route/>
+      </Routes>
+
+
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#" className='logo'>Any Store</Navbar.Brand>
@@ -23,19 +31,10 @@ function App() {
               navbarScroll
             >
               <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown title="Link" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link href="#action2">Cart</Nav.Link>
+      
               <Nav.Link href="#" disabled>
-                Link
+                도현도현
               </Nav.Link>
             </Nav>
             <Form className="d-flex">
