@@ -2,7 +2,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
-import 작명 from './data.js';
+import {a, b} from './data.js';
+// 여러개는 변수명 동일해야 함
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <div className="App">
+      {b}
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#" className='logo'>Any Store</Navbar.Brand>
@@ -50,7 +52,6 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      
       <div className='main-bg'></div>
       <div className="container">
         <div className="row">
@@ -70,7 +71,6 @@ function App() {
         </div>
       </div> 
     </div>
-
     
   );
 }

@@ -1,3 +1,5 @@
 let a = 10;
+let b = 100;
 
-export default a;
+export {a, b};
+// export 여러개 하기
