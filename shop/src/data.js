@@ -1,5 +1,30 @@
-let a = 10;
-let b = 100;
+let a = ["kim", a] // array
+a[0]
 
-export {a, b};
-// export 여러개 하기
+let b = {name: 'kim", age: 20'} // object
+b.name
+
+let data = [
+    {
+      id : 0,
+      title : "BIG LOGO KNIT PULLOVER IN IVORY",
+      content : "마뗑킴",
+      price : 120000
+    },
+  
+    {
+      id : 1,
+      title : "handmade wool trench CT",
+      content : "링서울",
+      price : 110000
+    },
+  
+    {
+      id : 2,
+      title : "버켄스탁 보스턴 퍼 모카 1020567",
+      content : "버켄스탁",
+      price : 130000
+    }
+  ] 
+
+export default data;

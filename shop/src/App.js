@@ -2,10 +2,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
-import {a, b} from './data.js';
-// 여러개는 변수명 동일해야 함
+import data from './data.js';
 
 function App() {
+
+  let [items] = useState(data)
 
   let [title, setTitle] = useState(['BIG LOGO KNIT PULLOVER IN IVORY', 'handmade wool trench CT', '버켄스탁 보스턴 퍼 모카 1020567'])
   let [brand, setBrand] = useState(['마뗑킴', '링서울', '버켄스탁'])
@@ -13,7 +14,6 @@ function App() {
 
   return (
     <div className="App">
-      {b}
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#" className='logo'>Any Store</Navbar.Brand>
