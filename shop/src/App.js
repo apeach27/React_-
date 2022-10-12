@@ -54,9 +54,9 @@ function App() {
       <div className="container">
         <div className="row">
           
-          <Card items={items[0]}></Card>
-          <Card items={items[1]}></Card>
-          <Card items={items[2]}></Card>
+          <Card items={items[0]} i={0}></Card>
+          <Card items={items[1]} i={1}></Card>
+          <Card items={items[2]} i={2}></Card>
 
         </div>
       </div> 
@@ -65,10 +65,10 @@ function App() {
   );
 }
 
-function Card(props, img, i){
+function Card(props){
   return (
     <div className="col-md-4">
-      <img src={process.env.PUBLIC_URL+'/img/'+( img[i] )+'.jpg'} alt="neat" width="80%" style={{cursor: 'pointer'}}/>
+      <img src={process.env.PUBLIC_URL+'/img/item' + props.i + '.jpg'} alt="items" width="80%" style={{cursor: 'pointer'}}/>
       <h4>{ props.items.title }</h4>
       <p>{ props.items.content }</p>
       <p>{ props.items.price }</p>
