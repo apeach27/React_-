@@ -1,9 +1,3 @@
-let a = ["kim", a] // array
-a[0]
-
-let b = {name: 'kim", age: 20'} // object
-b.name
-
 let data = [
     {
       id : 0,

@@ -7,9 +7,7 @@ import data from './data.js';
 function App() {
 
   let [items] = useState(data)
-
-  let [title, setTitle] = useState(['BIG LOGO KNIT PULLOVER IN IVORY', 'handmade wool trench CT', '버켄스탁 보스턴 퍼 모카 1020567'])
-  let [brand, setBrand] = useState(['마뗑킴', '링서울', '버켄스탁'])
+  console.log(items)
   let [img, setImg] = useState(['neat1', 'outer1', 'shoes1'])
 
   return (
@@ -57,12 +55,13 @@ function App() {
         <div className="row">
 
           {
-            title.map(function(a, i){
+            data.map(function(a, i){
               return (
                 <div className="col-md-4" key={i}>
                   <img src={process.env.PUBLIC_URL+'/img/'+( img[i] )+'.jpg'} alt="neat" width="80%" style={{cursor: 'pointer'}}/>
-                  <h4>{ title[i] }</h4>
-                  <p>{ brand[i] }</p>
+                  <h4>{ items[i].title }</h4>
+                  <p>{ items[i].content }</p>
+                  <p>{ items[i].price }</p>
                 </div>
               )
             })
