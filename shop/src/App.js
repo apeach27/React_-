@@ -9,17 +9,9 @@ function App() {
 
   let [items] = useState(data)
   console.log(items)
-  let [img, setImg] = useState(['neat1', 'outer1', 'shoes1'])
 
   return (
     <div className="App">
-
-      <Routes>
-        <Route path='/datail' element={<div></div>} />
-        <Route/>
-      </Routes>
-
-
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#" className='logo'>Any Store</Navbar.Brand>
@@ -49,6 +41,14 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      
+      <Routes>
+        <Route path='/' element={<div>메인페이지 입니다.</div>} />
+        <Route path='/detail' element={<div>상세페이지 입니다.</div>} />
+        <Route/>
+      </Routes>
+
+
       <div className='main-bg'></div>
       <div className="container">
         <div className="row">
