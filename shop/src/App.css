@@ -27,6 +27,15 @@
 .App-link {
   color: #61dafb;
 }
+.App a {
+  color: #282c34;
+  text-decoration: none;
+  margin:0 auto;
+  padding-right: 20px;
+}
+.App .navbar-nav a:last-child {
+  padding-right: 0;
+}
 .logo{
   font-weight: 700;
 }

@@ -4,6 +4,7 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstr
 import { useState } from 'react';
 import data from './data.js';
 import { Routes, Route, Link } from 'react-router-dom'
+import Detail from './detail.js';
 
 function App() {
 
@@ -22,12 +23,9 @@ function App() {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Cart</Nav.Link>
       
-              <Nav.Link href="#" disabled>
-                도현도현
-              </Nav.Link>
+              <Link to={"/"}>홈</Link>
+              <Link to={"/detail"}>상세페이지</Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
@@ -41,9 +39,7 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      
-      <Link to={"/"}>홈</Link>
-      <Link to={"/detail"}>상세페이지</Link>
+
 
       <Routes>
         <Route path='/' element={
@@ -63,9 +59,18 @@ function App() {
           
           </>
         } />
-        <Route path='/detail' element={<div>상세페이지 입니다.</div>} />
+
+        <Route path='/detail' element={
+          <>
+          <div className="container">
+            <div className="row">
+              <Detail/>
+            </div>
+          </div>
+          </>
+        } />
       </Routes>
-      
+
     </div>
     
   );
@@ -81,5 +86,7 @@ function Card(props){
     </div>
   )
 }
+
+
 
 export default App;
