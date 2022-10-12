@@ -54,20 +54,9 @@ function App() {
       <div className="container">
         <div className="row">
           
-          <Card items={items}></Card>
-
-          {
-            data.map(function(a, i){
-              return (
-                <div className="col-md-4" key={i}>
-                  <img src={process.env.PUBLIC_URL+'/img/'+( img[i] )+'.jpg'} alt="neat" width="80%" style={{cursor: 'pointer'}}/>
-                  <h4>{ items[i].title }</h4>
-                  <p>{ items[i].content }</p>
-                  <p>{ items[i].price }</p>
-                </div>
-              )
-            })
-          }
+          <Card items={items[0]}></Card>
+          <Card items={items[1]}></Card>
+          <Card items={items[2]}></Card>
 
         </div>
       </div> 
@@ -80,9 +69,9 @@ function Card(props, img, i){
   return (
     <div className="col-md-4">
       <img src={process.env.PUBLIC_URL+'/img/'+( img[i] )+'.jpg'} alt="neat" width="80%" style={{cursor: 'pointer'}}/>
-      <h4>{ props.items[0].title }</h4>
-      <p>{ props.items[1].content }</p>
-      <p>{ props.items[2].price }</p>
+      <h4>{ props.items.title }</h4>
+      <p>{ props.items.content }</p>
+      <p>{ props.items.price }</p>
     </div>
   )
 }
