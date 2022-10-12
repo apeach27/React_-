@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
+import 작명 from './data.js';
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
+      
       <div className='main-bg'></div>
       <div className="container">
         <div className="row">
