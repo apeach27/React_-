@@ -53,6 +53,8 @@ function App() {
       <div className='main-bg'></div>
       <div className="container">
         <div className="row">
+          
+          <Card items={items}></Card>
 
           {
             data.map(function(a, i){
@@ -72,6 +74,17 @@ function App() {
     </div>
     
   );
+}
+
+function Card(props, img, i){
+  return (
+    <div className="col-md-4">
+      <img src={process.env.PUBLIC_URL+'/img/'+( img[i] )+'.jpg'} alt="neat" width="80%" style={{cursor: 'pointer'}}/>
+      <h4>{ props.items[0].title }</h4>
+      <p>{ props.items[1].content }</p>
+      <p>{ props.items[2].price }</p>
+    </div>
+  )
 }
 
 export default App;
