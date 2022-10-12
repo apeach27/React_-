@@ -65,9 +65,7 @@ function App() {
         } />
         <Route path='/detail' element={<div>상세페이지 입니다.</div>} />
       </Routes>
-
-
-
+      
     </div>
     
   );
