@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
 import data from './data.js';
-import { Routes, Route, Link, useNavigate, Outlet, UNSAFE_DataRouterStateContext } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './pages/detail.js';
 
 function App() {
 
   let [items] = useState(data)
   //console.log(items)
-  let navigate = useNavigate();
+  let navigate = useNavigate(); // 페이지 이동 훅
 
   return (
     <div className="App">
@@ -62,7 +62,7 @@ function App() {
 
         } />
 
-        <Route path='/detail' element={<Detail/>} />
+        <Route path='/detail' element={<Detail items={items}/>} />
 
         {/* nested routes */}
         {/* nested routes의 element 보여주는 곳은 <Outlet> */}
@@ -98,9 +98,5 @@ function Card(props){
     </div>
   )
 }
-
-// 221107
-// 폴더구조 만들기
-// pages 폴더 생성 --> 페이지.js 다 모아놓을 것임
 
 export default App;
