@@ -62,7 +62,9 @@ function App() {
 
         } />
 
-        <Route path='/detail' element={<Detail items={items}/>} />
+        {/* 페이지 여러개  */}
+        {/* :URL 파라미터  */}
+        <Route path='/detail/:id' element={<Detail items={items}/>} />
 
         {/* nested routes */}
         {/* nested routes의 element 보여주는 곳은 <Outlet> */}
