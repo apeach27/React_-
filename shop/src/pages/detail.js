@@ -1,18 +1,4 @@
 import { useParams, useNavigate } from "react-router-dom";
-import styled from 'styled-components';
-
-let YellowBtn = styled.button `
-  background: ${props => props.bg};
-  color: ${props => props.bg == "blue" ? "white" : "black"};
-  padding: 10px;
-`
-let Box =  styled.div`
-  background: grey;
-  padding: 20px;
-`
-let NewBtn = styled.button(YellowBtn) `
-  // YellowBtn 복제
-`
 
 function Detail(props){
 
@@ -27,12 +13,7 @@ function Detail(props){
   return (
     <>
       <div className="col-md-6">
-        <Box>
-          <YellowBtn bg="blue">btn</YellowBtn>
-          <YellowBtn bg="pink">btn</YellowBtn>
 
-
-        </Box>
         <img src={process.env.PUBLIC_URL+'/img/item'+id+'.jpg'} alt="Detail_items" width="100%" />
       </div>
       <div className="col-md-6">

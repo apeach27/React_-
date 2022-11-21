@@ -93,7 +93,9 @@ function About(){
 function Card(props){
   return (
     <div className="col-md-4">
-      <img src={process.env.PUBLIC_URL+'/img/item' + (props.i) + '.jpg'} alt="items" width="80%" style={{cursor: 'pointer'}}/>
+      <Link to={'/detail/' + (props.i)}>
+        <img src={process.env.PUBLIC_URL+'/img/item' + (props.i) + '.jpg'} alt="items" width="80%" style={{cursor: 'pointer'}}/>
+      </Link>
       <h4>{ props.items.title }</h4>
       <p>{ props.items.content }</p>
       <p>{ props.items.price }</p>
