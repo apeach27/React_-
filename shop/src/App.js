@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#" className='logo'>Any Store</Navbar.Brand>
+          <Navbar.Brand href="/" className='logo'>Any Store</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
