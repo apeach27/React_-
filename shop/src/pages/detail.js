@@ -1,43 +1,51 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-// [컴포넌트의 Lifecycle]
-// 페이지에 장착되는 (mount)
-// 가끔 업데이트 되는 (update)
-// 필요없으면 제거되는 (unmount)
-
 function Detail(props){
-
-  useEffect(()=>{
-    for(let i=0; i<10000; i++){
-      console.log(1);
-    }
-
-    // useEffect 안에 적는 코드들은 
-    // - 어려운 연산
-    // - 서버에서 데이터 가져오는 작업
-    // - 타이머 장작
-
-
-  })
-
-  let [count, setCount] = useState(0)
 
   const navigate = useNavigate();
   let {id} = useParams();
-
   // 자료순서 고유아이디 활용
   let 찾은상품 = props.items.find(function(a){
     return a.id==id
   })
 
+  let [count, setCount] = useState(0)
+  let [alert1, setAlert] = useState(true) // 스위치 생성
+  let [num, setNum] = useState('')
+
+  useEffect(() => {
+    if(isNaN(num) == true){
+      alert('숫자만입력')
+    }
+  }, [num])
+
+  useEffect(() => {
+    setTimeout(() => {setAlert(false)}, 5000) 
+    console.log(1) // 출력되지 않는 것을 확인할 수 있음
+    
+    return ()=>{ // useEffect 동작 전에 실행 됨
+
+    }
+  }, []) // 컴포넌트 mount시 1회만 실행하고 싶을 때 사용
+
+
+
   return (
     <>
       <div className="col-md-6">
-        <img src={'/img/item'+id+'.jpg'} alt="Detail_items" width="100%" />
-
+        {
+          alert1 == true        
+          ? <div className="alert-warning">
+            5초 이내 구매시 할인
+          </div>
+          : null
+        }
         {count}<br/>
         <button onClick={()=>{setCount(count+1)}}>click</button>
+        <img src={'/img/item'+id+'.jpg'} alt="Detail_items" width="100%" />
+        <input onChange={(e)=> setNum(e.target.value) } />
+
       </div>
       <div className="col-md-6">
         <h4 className="pt-5">{찾은상품.title}</h4>
