@@ -5,12 +5,14 @@ import { useState } from 'react';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './pages/detail.js';
+import axios from 'axios';
 
 function App() {
 
-  let [items] = useState(data)
+  let [items, setItems] = useState(data)
   //console.log(items)
   let navigate = useNavigate(); // 페이지 이동 훅
+  let [cnt, setCnt] = useState(2);
 
   return (
     <div className="App">
@@ -46,18 +48,32 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-          <div className='main-bg'></div>
-          <div className="container">
-            <div className="row">
-              {
-                items.map((a, i) => {
-                  return(
-                    <Card items={ items[i] } i={ i }></Card>
-                  )
-                })
-              }
-            </div>
-          </div> 
+            <div className='main-bg'></div>
+            <div className="container">
+              <div className="row">
+                {
+                  items.map((a, i) => {
+                    return( <Card items={ items[i] } i={ i }></Card> )
+                  })
+                }
+              </div>
+            </div> 
+            <button className='btn btn-outline-success' onClick={()=>{
+
+              axios.get("https://codingapple1.github.io/shop/data"+cnt+`.json`)
+              .then((result)=>{ 
+                console.log(result.data)
+                // let copy = [...items, ...result.data];
+                setItems ([...items, ...result.data]);
+                setCnt(cnt+1);
+
+              })
+              .catch(()=>{ 
+                console.log('실패!!!');
+                alert('실패했습니다.');
+
+              })
+            }}>버튼</button>
           </>
 
         } />
