@@ -53,7 +53,7 @@ function App() {
               <div className="row">
                 {
                   items.map((a, i) => {
-                    return( <Card items={ items[i] } i={ i }></Card> )
+                    return( <Card items={ items[i] } i={ i } key={i}></Card> )
                   })
                 }
               </div>
@@ -70,10 +70,10 @@ function App() {
               })
               .catch(()=>{ 
                 console.log('실패!!!');
-                alert('실패했습니다.');
+                alert('상품정보가 없습니다.');
 
               })
-            }}>버튼</button>
+            }}>더보기</button>
           </>
 
         } />

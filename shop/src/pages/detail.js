@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Nav from 'react-bootstrap/Nav';
 
 function Detail(props){
 
@@ -13,6 +14,9 @@ function Detail(props){
   let [count, setCount] = useState(0)
   let [alert1, setAlert] = useState(true) // 스위치 생성
   let [num, setNum] = useState('')
+  let [tab, setTab] = useState(0)
+
+
 
   useEffect(() => {
     if(isNaN(num) == true){
@@ -28,7 +32,6 @@ function Detail(props){
 
     }
   }, []) // 컴포넌트 mount시 1회만 실행하고 싶을 때 사용
-
 
 
   return (
@@ -53,10 +56,41 @@ function Detail(props){
         <p>{찾은상품.price}원</p>
         <button className="btn btn-danger">주문하기</button> 
         <button className="btn btn-danger" onClick={()=>navigate(-1)}>뒤로가기</button> 
-
       </div>
+
+      <div className="col-md-6">       
+        <Nav justify variant="tabs" defaultActiveKey="link0">
+          <Nav.Item>
+            <Nav.Link onClick={()=>{setTab(0)}} eventKey="link0">Link0</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link onClick={()=>{setTab(1)}} eventKey="link1">Link1</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link onClick={()=>{setTab(2)}} eventKey="link2">Link</Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <TabContent tab={tab}/>
+      </div>
+
     </>
+
   )
+}
+function TabContent(props){
+  // if문 사용
+  // if(props.tab === 0){
+  //   return <div>내용0</div>
+  // } 
+  // if(props.tab === 1){
+  //   return <div>내용1</div>
+  // } 
+  // if(props.tab === 2){
+  //   return <div>내용2</div>
+  // }
+
+  // array 사용
+  return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.tab]
 }
 
 export default Detail;
