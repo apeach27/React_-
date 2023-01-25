@@ -16,8 +16,6 @@ function Detail(props){
   let [num, setNum] = useState('')
   let [tab, setTab] = useState(0)
 
-
-
   useEffect(() => {
     if(isNaN(num) == true){
       alert('숫자만입력')
@@ -33,9 +31,18 @@ function Detail(props){
     }
   }, []) // 컴포넌트 mount시 1회만 실행하고 싶을 때 사용
 
+  
+  let [detailFade, setDetailFade] = useState('')
+
+  useEffect(()=>{
+    setDetailFade('end')
+    return ()=>{
+      setDetailFade('')
+    }
+  }, [])
 
   return (
-    <>
+    <div className={'container start '+detailFade}>
       <div className="col-md-6">
         {
           alert1 == true        
@@ -72,16 +79,16 @@ function Detail(props){
         </Nav>
         <TabContent tab={tab}/>
       </div>
-
-    </>
-
+    </div>
   )
 }
+
 function TabContent({tab}){
   let[fade, setFade] = useState('')
 
   useEffect(()=>{
-    setTimeout(() => {setFade('end')}, 100);
+    setTimeout(() => {setFade('end')}, 10);
+
     return ()=>{
       setFade('')
     }
