@@ -42,6 +42,21 @@
   background-size:contain;
   background-position: center;
 }
+.nav-tabs{
+  margin-top: 50px;
+}
+.nav-item{
+  line-height: 50px;
+}
+.start{
+  opacity: 0;
+}
+.end{
+  opacity: 1;
+  transition: opacity .5s;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

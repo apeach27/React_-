@@ -77,20 +77,19 @@ function Detail(props){
 
   )
 }
-function TabContent(props){
-  // if문 사용
-  // if(props.tab === 0){
-  //   return <div>내용0</div>
-  // } 
-  // if(props.tab === 1){
-  //   return <div>내용1</div>
-  // } 
-  // if(props.tab === 2){
-  //   return <div>내용2</div>
-  // }
+function TabContent({tab}){
+  let[fade, setFade] = useState('')
 
-  // array 사용
-  return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.tab]
+  useEffect(()=>{
+    setTimeout(() => {setFade('end')}, 100);
+    return ()=>{
+      setFade('')
+    }
+  }, [tab])
+
+  return <div className={'start ' + fade}>
+    {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab]}
+  </div>
 }
 
 export default Detail;
